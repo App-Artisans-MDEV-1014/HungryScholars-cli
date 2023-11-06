@@ -1,10 +1,25 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text, Button, SafeAreaView } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 export default function Home() {
+  const handleLogout = () => {
+    auth()
+      .signOut()
+      .then(() => {
+        // Successfully signed out
+        console.log('User signed out');
+      })
+      .catch(error => {
+        // Handle sign-out errors
+        console.error('Sign-out error:', error);
+      });
+  };
+
   return (
-    <View>
+    <SafeAreaView>
       <Text>Home</Text>
-    </View>
-  )
+      <Button title="Logout" onPress={handleLogout} />
+    </SafeAreaView>
+  );
 }
