@@ -1,31 +1,32 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  navigation: any; // Replace 'any' with the correct navigation prop type
+  navigation: any; 
 }
 
 const FourthOnboardingScreen: React.FC<Props> = ({navigation}) => {
   const handleLoginButtonPress = () => {
     // Navigate to the login screen
-    navigation.navigate('LoginScreen');
+    navigation.navigate('Login');
   };
 
   const handleSignupButtonPress = () => {
     // Navigate to the signup screen
-    navigation.navigate('SignUpScreen');
+    navigation.navigate('Register');
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Ready to Go</Text>
       {/* Add your content for the fourth onboarding screen here */}
-      <Image source={require('../../assets/images/img-fourthonboardingscreen.png')} style={styles.image} resizeMode="contain" />
+      <Image source={require('../../../assets/images/img-fourthonboardingscreen.png')} style={styles.image} resizeMode="contain" />
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleSignupButtonPress}>
           <ImageBackground
-            source={require('../../assets/images/signup-img.png')}
+            source={require('../../../assets/images/signup-img.png')}
             style={styles.imageButton}
             resizeMode="contain"
           >
@@ -35,7 +36,7 @@ const FourthOnboardingScreen: React.FC<Props> = ({navigation}) => {
 
         <TouchableOpacity style={styles.button} onPress={handleLoginButtonPress}>
           <ImageBackground
-            source={require('../../assets/images/login-img.png')}
+            source={require('../../../assets/images/login-img.png')}
             style={styles.imageButton}
             resizeMode="contain"
           >

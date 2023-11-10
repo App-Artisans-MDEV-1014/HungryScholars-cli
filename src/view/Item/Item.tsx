@@ -28,11 +28,11 @@ const Item: FC<IProps> = (props) => {
   };
 
   return (
-    <ScrollView>
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
+    <SafeAreaView >
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back" size={24} color="#FFDD95" />
+          <Ionicons style={styles.backbtn} name="chevron-back" size={24} color="#FFDD95" />
         </TouchableOpacity>
         
       </View>
@@ -196,8 +196,9 @@ const styles = StyleSheet.create({
   icon: {
     width: 40, // Adjust the width and height as needed for your icon
     height: 40,
-
-  
+  },
+  backbtn: {
+    paddingLeft: 20,
   },
   quantityContainer: {
     padding: 20,

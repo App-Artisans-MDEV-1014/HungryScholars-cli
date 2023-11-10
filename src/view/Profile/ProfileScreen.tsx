@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 
 type RootStackParamList = {
@@ -44,14 +47,32 @@ const ProfileScreen: React.FC<Props> = ({navigation}) => {
       navigation.navigate('ChangePasswordScreen');
     };
 
+    const handleLogout = () => {
+      auth()
+        .signOut()
+        .then(() => {
+          // Successfully signed out
+          console.log('User signed out');
+        })
+        .catch(error => {
+          // Handle sign-out errors
+          console.error('Sign-out error:', error);
+        });
+    };
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* Top Navbar */}
       <View style={styles.topNavbar}>
-        <TouchableOpacity>
+      <TouchableOpacity
+  onPress={() => {
+    // Navigate back to the previous screen using navigation.goBack()
+    navigation.goBack();
+  }}
+>
           <Image source={require('../../../assets/images/ArrowLeftShort.png')} style={styles.backButton} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleLogout}>
           <Image source={require('../../../assets/images/BoxArrowRight.png')} style={styles.logoutButton} />
         </TouchableOpacity>
       </View>
@@ -107,7 +128,7 @@ const ProfileScreen: React.FC<Props> = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -121,7 +142,7 @@ const styles = StyleSheet.create({
     },
     topNavbar: {
       backgroundColor: '#646465',
-      paddingTop: 40,
+      paddingTop: 20,
       paddingBottom: 20,
       paddingHorizontal: 20,
       flexDirection: 'row',

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native';
 
 interface Props {
-  navigation: any; // Replace 'any' with the correct navigation prop type
+  navigation: any;
 }
 
 const FirstOnboardingScreen: React.FC<Props> = ({ navigation }) => {
@@ -14,11 +14,11 @@ const FirstOnboardingScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Hello, Hungry Scholars</Text>
-      <Image source={require('../../assets/images/img-firstonboardingscreen.png')} style={styles.image} resizeMode="contain" />
+      <Image source={require('../../../assets/images/img-firstonboardingscreen.png')} style={styles.image} resizeMode="contain" />
 
       <TouchableOpacity onPress={handleNextButtonPress}>
         <ImageBackground
-          source={require('../../assets/images/img-nextbutton.png')}
+          source={require('../../../assets/images/img-nextbutton.png')}
           style={styles.button}
           resizeMode="contain">
         </ImageBackground>

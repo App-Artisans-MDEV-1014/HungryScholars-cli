@@ -14,11 +14,11 @@ const SecondOnboardingScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Order your favorite food</Text>
-      <Image source={require('../../assets/images/img-secondonboardingscreen.png')} style={styles.image} resizeMode="contain" />
+      <Image source={require('../../../assets/images/img-secondonboardingscreen.png')} style={styles.image} resizeMode="contain" />
 
       <TouchableOpacity onPress={handleNextButtonPress}>
         <ImageBackground
-          source={require('../../assets/images/img-nextbutton.png')}
+          source={require('../../../assets/images/img-nextbutton.png')}
           style={styles.button}
           resizeMode="contain"
         >

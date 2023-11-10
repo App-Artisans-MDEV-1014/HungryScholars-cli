@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import PaymentMethodSection from '../PaymentMethod/PaymentMethodSection';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type RootStackParamList = {
   LaunchingScreen: undefined;
@@ -87,7 +88,7 @@ const CheckoutScreen: React.FC<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={handleBackButtonPress}>
           <Text style={styles.backButton}>Back</Text>
@@ -133,12 +134,12 @@ const CheckoutScreen: React.FC<Props> = () => {
           <Text style={styles.totalSum}>Total: ${totalSum.toFixed(2)}</Text>
         </View>
         <TouchableOpacity style={styles.checkoutButton}
-        onPress={()=>{navigation.navigate('PaymentMethod')}}
+        // onPress={()=>{navigation.navigate('PaymentMethod')}}
         >
           <Text style={styles.checkoutButtonText}>Checkout</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
