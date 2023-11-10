@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const RegisterScreen: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -27,25 +28,34 @@ const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registration</Text>
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <Text style={styles.heading}>Registration</Text>
+      <Image source={require('../../../assets/APP_logo_lg.png')} style={styles.logo} resizeMode="contain" />
+
+
+      {error ? <Text >{error}</Text> : null}
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#FFDD95"
         onChangeText={setEmail}
         value={email}
       />
       <TextInput
-        style={styles.input}
-        placeholder="Password"
+       
         onChangeText={setPassword}
         value={password}
-        secureTextEntry={true}
+        style={styles.input}
+        placeholder="Password"
+        placeholderTextColor="#FFDD95"
+        secureTextEntry
       />
-      <Button title="Register" onPress={handleRegister} />
-      <Button title="Login" 
-onPress={handleLogin}
-        />
+      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleLogin}>
+        <Text style={styles.signInText}>Already have an account? Sign In</Text>
+      </TouchableOpacity>
+       
     </View>
   );
 }
@@ -55,22 +65,45 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#242428',
   },
-  title: {
+  heading: {
     fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFDD95',
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150,
+    height: 150,
     marginBottom: 20,
   },
   input: {
     width: '80%',
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
     borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
+    borderColor: '#FFDD95',
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    marginVertical: 10,
+    color: '#FFDD95',
   },
-  error: {
-    color: 'red',
-    marginBottom: 10,
+  button: {
+    backgroundColor: '#FFDD95',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginVertical: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#242428',
+    textAlign: 'center',
+  },
+  signInText: {
+    color: '#FFDD95',
+    marginTop: 20,
   },
 });
 

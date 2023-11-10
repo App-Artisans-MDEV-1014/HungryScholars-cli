@@ -1,0 +1,67 @@
+{
+    "restaurants": [
+      {
+        "title": "McDonald's",
+        "image": "https://i.ibb.co/wSPfHmW/Mcdonalds-Banner.jpg",
+        "rating": 4.7,
+        "minCharge": 10.00,
+        "items": [
+          {
+            "item name": "Big Mac",
+            "item rate": 5.00,
+            "Nutritional": {
+              "calories": 550,
+              "carbs": 45,
+              "protein": 25,
+              "fat": 29
+            },
+            "item image": "https://picsum.photos/200/200"
+          },
+          {
+            "item name": "Chicken McNuggets",
+            "item rate": 4.50,
+            "Nutritional": {
+              "calories": 320,
+              "carbs": 20,
+              "protein": 15,
+              "fat": 20
+            },
+            "item image": "https://picsum.photos/200/200"
+          }
+        
+        ]
+      },
+      {
+        "title": "KFC (Kentucky Fried Chicken)",
+        "image": "https://www.caramelpictures.com/wp-content/uploads/2021/04/KFC-Uber-banner-2.jpg",
+        "rating": 4.5,
+        "minCharge": 12.00,
+        "items": [
+          {
+            "item name": "Original Recipe Chicken",
+            "item rate": 6.00,
+            "Nutritional": {
+              "calories": 380,
+              "carbs": 16,
+              "protein": 21,
+              "fat": 27
+            },
+            "item image": "https://picsum.photos/200/200"
+          },
+          {
+            "item name": "Zinger Burger",
+            "item rate": 5.50,
+            "Nutritional": {
+              "calories": 520,
+              "carbs": 42,
+              "protein": 22,
+              "fat": 30
+            },
+            "item image": "https://picsum.photos/200/200"
+          }
+         
+        ]
+      }
+    ]
+  }
+  

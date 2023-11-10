@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "945614136748",
+    "project_id": "hungryscholars-db3eb",
+    "storage_bucket": "hungryscholars-db3eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945614136748:android:6dd7f6853a1ee956e20609",
+        "android_client_info": {
+          "package_name": "com.hungryscholars"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQtriS9fdarkkijkOPjwIBHBRxvunAMAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

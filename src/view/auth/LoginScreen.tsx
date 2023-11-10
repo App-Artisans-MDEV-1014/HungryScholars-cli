@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 
 const LoginScreen: React.FC = () => {
@@ -27,25 +29,31 @@ const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <Text style={styles.heading}>Login</Text>
+
+      <Image source={require('../../../assets/APP_logo_lg.png')} style={styles.logo} resizeMode="contain" />
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#FFDD95"
         onChangeText={setEmail}
         value={email}
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor="#FFDD95"
         onChangeText={setPassword}
         value={password}
         secureTextEntry={true}
       />
-      <Button title="Login" onPress={handleLogin} />
-      <Button title="Register" 
-onPress={handleRegister}
-        />
+
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Sign In</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleRegister}>
+        <Text style={styles.createAccountText}>Don't have an account? Create One</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -55,22 +63,45 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#242428',
   },
-  title: {
+  heading: {
     fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFDD95',
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150,
+    height: 150,
     marginBottom: 20,
   },
   input: {
     width: '80%',
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
     borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
+    borderColor: '#FFDD95',
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    marginVertical: 10,
+    color: '#FFDD95',
   },
-  error: {
-    color: 'red',
-    marginBottom: 10,
+  button: {
+    backgroundColor: '#FFDD95',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginVertical: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#242428',
+    textAlign: 'center',
+  },
+  createAccountText: {
+    color: '#FFDD95',
+    marginTop: 20,
   },
 });
 
