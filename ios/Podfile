@@ -30,7 +30,7 @@ target 'HungryScholars' do
   config = use_native_modules!
   use_frameworks! :linkage => :static
   $RNFirebaseAsStaticFramework = true
-
+  pod 'Firebase/Auth', '~> 10.19.0'
 
   # Flags change depending on the env values.
   flags = get_default_flags()

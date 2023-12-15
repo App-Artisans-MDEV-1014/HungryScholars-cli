@@ -21,7 +21,6 @@ import ThirdOnboardingScreen from './src/view/Onboarding/ThirdOnboardingScreen';
 import FourthOnboardingScreen from './src/view/Onboarding/FourthOnboardingScreen';
 import { AuthProvider } from './src/Context/AuthProvider';
 
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -48,9 +47,8 @@ function App() {
 
   const TabNavigator = () => (
     <Tab.Navigator
-   
       screenOptions={({ route }) => ({
-        headerShown:false,
+        headerShown: false,
         tabBarActiveTintColor: '#FFDD95',
         tabBarInactiveTintColor: 'white',
         tabBarIcon: ({ focused, color }) => {
@@ -83,124 +81,41 @@ function App() {
     </Tab.Navigator>
   );
 
-  return (
-   
-    <NavigationContainer>
-<AuthProvider>
+  const AuthenticatedScreens = () => (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Home" component={TabNavigator} />
+      <Stack.Screen name="PaymentMethod" component={PaymentMethodSection} />
+      <Stack.Screen name="Item" component={Item} />
+      <Stack.Screen name="StarRating" component={StarRating} />
+    </Stack.Navigator>
+  );
 
+  const UnauthenticatedScreens = () => (
     <Stack.Navigator
       initialRouteName="LaunchingScreen"
       screenOptions={{
-        headerShown:false
-      }}>
-  {user ? (
-    <>
-      <Stack.Screen 
-        name="LaunchingScreen" 
-        component={LaunchingScreen} 
-      />
-      <Stack.Screen 
-        name="FirstOnboardingScreen" 
-        component={FirstOnboardingScreen} 
-      />
-      <Stack.Screen 
-        name="SecondOnboardingScreen" 
-        component={SecondOnboardingScreen} 
-      />
-      <Stack.Screen
-        name="ThirdOnboardingScreen" 
-        component={ThirdOnboardingScreen} 
-      />
-      <Stack.Screen 
-        name="FourthOnboardingScreen" 
-        component={FourthOnboardingScreen} 
-      />
-      <Stack.Screen
-        name="Home"
-        component={TabNavigator}  
-      />
-      <Stack.Screen
-        name="PaymentMethod"
-        component={PaymentMethodSection}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-      <Stack.Screen
-        name="Item"
-        component={Item}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-      <Stack.Screen
-        name="StarRating"
-        component={StarRating}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-        <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-        <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-    </>
-  ) : (
-    <>
-    <Stack.Screen 
-        name="LaunchingScreen" 
-        component={LaunchingScreen} 
-      />
-      
-      <Stack.Screen 
-        name="FirstOnboardingScreen" 
-        component={FirstOnboardingScreen} 
-      />
-      <Stack.Screen 
-        name="SecondOnboardingScreen" 
-        component={SecondOnboardingScreen} 
-      />
-      <Stack.Screen
-        name="ThirdOnboardingScreen" 
-        component={ThirdOnboardingScreen} 
-      />
-      <Stack.Screen 
-        name="FourthOnboardingScreen" 
-        component={FourthOnboardingScreen} 
-      />
-      
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="LaunchingScreen" component={LaunchingScreen} />
+      <Stack.Screen name="FirstOnboardingScreen" component={FirstOnboardingScreen} />
+      <Stack.Screen name="SecondOnboardingScreen" component={SecondOnboardingScreen} />
+      <Stack.Screen name="ThirdOnboardingScreen" component={ThirdOnboardingScreen} />
+      <Stack.Screen name="FourthOnboardingScreen" component={FourthOnboardingScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+    </Stack.Navigator>
+  );
 
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-      <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{
-          headerStyle: { backgroundColor: 'transparent' },
-        }}
-      />
-    </>
-  )}
-</Stack.Navigator>
-</AuthProvider>
-
+  return (
+    <NavigationContainer>
+      <AuthProvider>{user ? <AuthenticatedScreens /> : <UnauthenticatedScreens />}</AuthProvider>
     </NavigationContainer>
-  
   );
 }
 
