@@ -1,36 +1,35 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
-import { Image } from 'react-native';
-import { TouchableOpacity } from 'react-native';
-
+import { useAuth } from '../../Context/AuthProvider'; 
 
 const LoginScreen: React.FC = () => {
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-const navigation = useNavigation();
+  const navigation = useNavigation();
+  const { signIn } = useAuth(); // Use the signIn function from AuthProvider
+
   const handleRegister = () => {
     navigation.navigate('Register');
-  }
+  };
+
   const handleLogin = async () => {
     try {
       setError(null);
-      const userCredential = await auth().signInWithEmailAndPassword(email, password);
-      console.log('User logged in:', userCredential.user);
-        navigation.navigate('Home');
+      await signIn(email, password);
+      // Additional actions after successful login
+      console.log('User logged in:', email);
+      navigation.navigate('Home');
     } catch (e) {
       setError(e.message);
     }
-  }
-
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Login</Text>
-
       <Image source={require('../../../assets/APP_logo_lg.png')} style={styles.logo} resizeMode="contain" />
       <TextInput
         style={styles.input}
@@ -47,7 +46,6 @@ const navigation = useNavigation();
         value={password}
         secureTextEntry={true}
       />
-
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
@@ -56,8 +54,7 @@ const navigation = useNavigation();
       </TouchableOpacity>
     </View>
   );
-}
-
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

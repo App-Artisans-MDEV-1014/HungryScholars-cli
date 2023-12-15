@@ -19,6 +19,8 @@ import FirstOnboardingScreen from './src/view/Onboarding/FirstOnboardingScreen';
 import SecondOnboardingScreen from './src/view/Onboarding/SecondOnboardingScreen';
 import ThirdOnboardingScreen from './src/view/Onboarding/ThirdOnboardingScreen';
 import FourthOnboardingScreen from './src/view/Onboarding/FourthOnboardingScreen';
+import { AuthProvider } from './src/Context/AuthProvider';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -82,7 +84,10 @@ function App() {
   );
 
   return (
+   
     <NavigationContainer>
+<AuthProvider>
+
     <Stack.Navigator
       initialRouteName="LaunchingScreen"
       screenOptions={{
@@ -192,8 +197,10 @@ function App() {
     </>
   )}
 </Stack.Navigator>
+</AuthProvider>
 
     </NavigationContainer>
+  
   );
 }
 
