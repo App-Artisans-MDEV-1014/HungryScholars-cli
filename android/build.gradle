@@ -11,11 +11,11 @@ buildscript {
         ndkVersion = "23.1.7779620"
     }
     repositories {
-        google()
+         google()
         mavenCentral()
     }
-    dependencies {    
-        classpath ('com.google.gms:google-services:4.4.0')
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.3'
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
