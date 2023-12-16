@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native';
 
 interface Props {
-  navigation: any; // Replace 'any' with the correct navigation prop type
+  navigation: any;
 }
 
 const SecondOnboardingScreen: React.FC<Props> = ({ navigation }) => {
@@ -22,7 +22,6 @@ const SecondOnboardingScreen: React.FC<Props> = ({ navigation }) => {
           style={styles.button}
           resizeMode="contain"
         >
-          {/* Add any text or other components on the image button */}
         </ImageBackground>
       </TouchableOpacity>
     </View>

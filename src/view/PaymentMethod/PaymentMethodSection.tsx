@@ -2,15 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 interface PaymentMethodProps {
-  // Add any props needed for payment method data
 }
 
 const PaymentMethodSection: React.FC<PaymentMethodProps> = (props) => {
   const paymentMethods = [
     { id: '1', name: 'Debit Card', icon: require('../../../assets/images/logo.png') },
     { id: '2', name: 'Credit Credit', icon: require('../../../assets/images/logo.png') },
-    { id: '3', name: 'PayPal', icon: require('../../../assets/images/logo.png') }, // New payment option
-    // Add more payment methods as needed
+    { id: '3', name: 'PayPal', icon: require('../../../assets/images/logo.png') },
   ];
 
   return (
@@ -46,17 +44,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   paymentOptionsContainer: {
-    marginTop: 10, // Add marginTop to separate the payment options from the header
+    marginTop: 10, 
   },
   paymentOption: {
-    flexDirection: 'row', // Display icon and text in a row
-    alignItems: 'center', // Center the content horizontally
-    marginBottom: 10, // Add marginBottom to separate each payment option
+    flexDirection: 'row', 
+    alignItems: 'center',
+    marginBottom: 10,
   },
   paymentMethodIcon: {
     width: 30,
     height: 30,
-    marginRight: 10, // Add marginRight to create space between icon and text
+    marginRight: 10,
   },
   paymentMethodName: {
     fontSize: 16,

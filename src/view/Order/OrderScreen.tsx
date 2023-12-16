@@ -7,7 +7,6 @@ type RootStackParamList = {
   SignInSignUp: undefined;
   SignUp: undefined;
   OrderScreen: undefined;
-  // Add other screen names here as needed
 };
 
 type OrderScreenNavigationProp = StackNavigationProp<RootStackParamList, 'OrderScreen'>;
@@ -34,7 +33,6 @@ const OrderScreen: React.FC<Props> = ({ navigation }) => {
   const [selectedOrder, setSelectedOrder] = useState<OrderItem | null>(null);
 
   const handleOrderAgain = (order: OrderItem) => {
-    // This function won't be functional as you mentioned, but you can implement the logic here to navigate to the order screen with selected items if needed.
     setSelectedOrder(order);
   };
 
@@ -70,9 +68,6 @@ const OrderScreen: React.FC<Props> = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.orderList}
       />
-
-      {/* Bottom Bar with Icons */}
-     
     </View>
   );
 };
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: 'row',
-    justifyContent: 'center', // Change to space-between to place the Orders Text on the right
+    justifyContent: 'center',
     alignItems: 'center',
     height: 120,
     backgroundColor: '#242428',

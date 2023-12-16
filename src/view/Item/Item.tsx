@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { SafeAreaView, Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import StarRating from '../StarRating/StarRating'; // Assuming the StarRating component is in a separate file
+import StarRating from '../StarRating/StarRating';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -22,7 +22,6 @@ const Item: FC<IProps> = (props) => {
   };
 
   const handleAddToCart = () => {
-    // Implement the logic to add the item to the cart here
     console.log(`Added ${quantity} items to the cart.`);
     navigation.navigate('Checkout');
   };
@@ -39,7 +38,7 @@ const Item: FC<IProps> = (props) => {
     {/* Image */}
     <View style={styles.imageContainer}>
       <Image
-          source={require('../../../assets/images/Burger.jpg')} // Replace with your local image path
+          source={require('../../../assets/images/Burger.jpg')}
           style={styles.image}
         />
       <View style={styles.overlay}>
@@ -194,7 +193,7 @@ const styles = StyleSheet.create({
   height:50,
   },
   icon: {
-    width: 40, // Adjust the width and height as needed for your icon
+    width: 40,
     height: 40,
   },
   backbtn: {

@@ -20,7 +20,6 @@ const FourthOnboardingScreen: React.FC<Props> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Ready to Go</Text>
-      {/* Add your content for the fourth onboarding screen here */}
       <Image source={require('../../../assets/images/img-fourthonboardingscreen.png')} style={styles.image} resizeMode="contain" />
 
       <View style={styles.buttonContainer}>
@@ -30,7 +29,6 @@ const FourthOnboardingScreen: React.FC<Props> = ({navigation}) => {
             style={styles.imageButton}
             resizeMode="contain"
           >
-            {/* Add any text or other components on the image button */}
           </ImageBackground>
         </TouchableOpacity>
 
@@ -40,7 +38,6 @@ const FourthOnboardingScreen: React.FC<Props> = ({navigation}) => {
             style={styles.imageButton}
             resizeMode="contain"
           >
-            {/* Add any text or other components on the image button */}
           </ImageBackground>
         </TouchableOpacity>
       </View>

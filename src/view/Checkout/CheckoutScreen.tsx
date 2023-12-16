@@ -10,7 +10,6 @@ type RootStackParamList = {
   SignInSignUp: undefined;
   SignUp: undefined;
   Checkout: undefined;
-  // Add other screen names here as needed
 };
 
 type CheckoutScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Checkout'>;
@@ -28,13 +27,11 @@ interface OrderItem {
 
 const checkoutData: OrderItem[] = [
   { id: '1', name: 'Hamburger', price: 8.99, quantity: 1 },
-  // Add more order items as needed
 ];
 
 const studentDetails = {
   name: 'John Doe',
   contactNumber: '123-456-7890',
-  // Add other student details as needed
 };
 
 const CheckoutScreen: React.FC<Props> = () => {
@@ -133,9 +130,7 @@ const CheckoutScreen: React.FC<Props> = () => {
           <Text style={styles.itemCount}>Items Selected: {itemCount}</Text>
           <Text style={styles.totalSum}>Total: ${totalSum.toFixed(2)}</Text>
         </View>
-        <TouchableOpacity style={styles.checkoutButton}
-        // onPress={()=>{navigation.navigate('PaymentMethod')}}
-        >
+        <TouchableOpacity style={styles.checkoutButton}>
           <Text style={styles.checkoutButtonText}>Checkout</Text>
         </TouchableOpacity>
       </View>

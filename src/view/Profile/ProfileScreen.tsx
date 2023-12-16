@@ -1,5 +1,4 @@
-// ProfileScreen.tsx
-
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,28 +9,17 @@ const ProfileScreen = () => {
   const deviceWidth = Dimensions.get('window').width;
   const borderRadiusPercentage = 50;
 
-  const [username, setUsername] = useState<string | null>(null);
   const [email, setEmail] = useState<string | null>(null);
   const [phoneNumber, setPhoneNumber] = useState<string | null>(null);
 
   const borderRadiusPixel = (deviceWidth * borderRadiusPercentage) / 100;
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (user) {
-      setUsername(user.displayName || null);
       setEmail(user.email || null);
-      // You may fetch and set the phone number if available in your user object
-      // setPhoneNumber(user.phoneNumber || null);
     }
   }, [user]);
-
-  const handleReport = () => {
-    // Implement your logic for reporting
-  };
-
-  const handleChangePassword = () => {
-    // Implement your logic for changing password
-  };
 
   const handleLogout = async () => {
     try {
@@ -68,18 +56,6 @@ const ProfileScreen = () => {
 
       {/* User Details */}
       <View style={styles.userDetailsContainer}>
-        <Text style={styles.label}>Username</Text>
-        <View style={styles.textFieldContainer}>
-          <TextInput
-            value={username || ''}
-            placeholder="Enter username"
-            placeholderTextColor="white"
-            style={styles.textField}
-            onChangeText={(text) => setUsername(text)}
-          />
-          <Image source={require('../../../assets/images/PencilFill.png')} style={styles.pencilIcon} />
-        </View>
-
         <Text style={[styles.label, { marginTop: 15 }]}>Email</Text>
         <View style={styles.textFieldContainer}>
           <TextInput
@@ -89,36 +65,12 @@ const ProfileScreen = () => {
             style={styles.textField}
             onChangeText={(text) => setEmail(text)}
           />
-          <Image source={require('../../../assets/images/PencilFill.png')} style={styles.pencilIcon} />
         </View>
-
-        <Text style={[styles.label, { marginTop: 15 }]}>Mobile</Text>
-        <View style={styles.textFieldContainer}>
-          <TextInput
-            value={phoneNumber || ''}
-            placeholder="Enter phone number"
-            placeholderTextColor="white"
-            style={styles.textField}
-            onChangeText={(text) => setPhoneNumber(text)}
-          />
-          <Image source={require('../../../assets/images/PencilFill.png')} style={styles.pencilIcon} />
-        </View>
-      </View>
-
-      {/* Support and Update Password */}
-      <View style={styles.supportUpdateContainer}>
-        <TouchableOpacity onPress={handleReport}>
-          <Image source={require('../../../assets/images/Headset.png')} style={styles.tabIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleChangePassword}>
-          <Text style={styles.updatePasswordLink}>Update Password?</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
 
-// Add or modify the styles as needed
 const styles = StyleSheet.create({
   container: {
     flex: 1,

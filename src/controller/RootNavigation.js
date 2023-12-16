@@ -1,14 +1,9 @@
+import {createNavigationContainerRef} from '@react-navigation/native';
 
-  // RootNavigation.js
+export const navigationRef = createNavigationContainerRef();
 
-  import { createNavigationContainerRef } from '@react-navigation/native';
-
-  export const navigationRef = createNavigationContainerRef()
-
-  export function navigate(name, params) {
-    if (navigationRef.isReady()) {
-      navigationRef.navigate(name, params);
-    }
+export function navigate(name, params) {
+  if (navigationRef.isReady()) {
+    navigationRef.navigate(name, params);
   }
-
-  // add other navigation functions that you need and export them
+}
