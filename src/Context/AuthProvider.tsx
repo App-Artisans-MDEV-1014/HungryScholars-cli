@@ -1,5 +1,3 @@
-// AuthProvider.tsx
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 

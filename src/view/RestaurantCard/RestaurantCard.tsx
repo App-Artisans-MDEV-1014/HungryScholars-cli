@@ -41,10 +41,10 @@ const RestaurantCard: React.FC<IProps> = ({ restaurants }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10, // Add margin between each card
+    marginVertical: 10, 
   },
   card: {
-    marginBottom: 10, // Add additional margin for each card
+    marginBottom: 10,
   },
   imageContainer: {
     width: '100%',

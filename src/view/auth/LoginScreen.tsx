@@ -8,8 +8,9 @@ const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null); 
   const navigation = useNavigation();
-  const { signIn } = useAuth(); // Use the signIn function from AuthProvider
+  const { signIn } = useAuth(); 
 
   const handleRegister = () => {
     navigation.navigate('Register');
@@ -18,10 +19,21 @@ const LoginScreen: React.FC = () => {
   const handleLogin = async () => {
     try {
       setError(null);
+      setSuccessMessage(null);
+      // Check if email and password are not blank
+      if (!email || !password) {
+        setError("Email and password cannot be blank.");
+        return;
+      }
+
       await signIn(email, password);
-      // Additional actions after successful login
+      setSuccessMessage("Login successful!");
+     
       console.log('User logged in:', email);
-      navigation.navigate('Home');
+      
+      setTimeout(() => {
+        navigation.navigate('Home');
+      }, 2000);
     } catch (e) {
       setError(e.message);
     }
@@ -49,12 +61,22 @@ const LoginScreen: React.FC = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
+
+      {error && (
+        <Text style={styles.errorText}>{error}</Text>
+      )}
+
+      {successMessage && (
+        <Text style={styles.successText}>{successMessage}</Text>
+      )}
+
       <TouchableOpacity onPress={handleRegister}>
         <Text style={styles.createAccountText}>Don't have an account? Create One</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -99,6 +121,14 @@ const styles = StyleSheet.create({
   createAccountText: {
     color: '#FFDD95',
     marginTop: 20,
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 10,
+  },
+  successText: {
+    color: 'green',
+    marginTop: 10,
   },
 });
 

@@ -32,11 +32,9 @@ const imgrestaurant = {
 };
 
 const Home: FC<IProps> = (props) => {
-  // const navigation = useNavigation();
   const [restaurants, setRestaurants] = useState<IRestaurant[]>([]);
 
   useEffect(() => {
-    // Assuming restaurantData is imported and contains the JSON data
     setRestaurants(restaurantData.restaurants as IRestaurant[]); // Explicit type assertion
   }, []);
 
@@ -47,16 +45,13 @@ const Home: FC<IProps> = (props) => {
     return (
       <View style={styles.topBar}>
         <Image
-          source={require('../../../assets/images/logo.png')} // Replace with your app logo image source
+          source={require('../../../assets/images/logo.png')}
           style={styles.appLogo}
           resizeMode="contain"
         />
       </View>
     );
   };
-
-  
-  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -75,7 +70,6 @@ const Home: FC<IProps> = (props) => {
             <View style={styles.imageOverlay} />
             <Text style={styles.imageText}>Barrie</Text>
           </ImageBackground>
-          {/* Add more views for other images */}
           <ImageBackground source={require('../../../assets/images/Campuses/Orangeville.jpg')} style={styles.image}>
             <View style={styles.imageOverlay} />
             <Text style={styles.imageText}>Orangeville</Text>
@@ -187,11 +181,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF', // Updated to white
+    color: '#FFFFFF',
   },
   rating: {
     fontSize: 14,
-    color: '#FFFFFF', // Updated to white
+    color: '#FFFFFF',
   },
 
   topBar: {
@@ -204,7 +198,6 @@ const styles = StyleSheet.create({
   appLogo: {
     width: 300,
     height: 50,
-    // Add any other styles for the app logo here
   },
 
 });

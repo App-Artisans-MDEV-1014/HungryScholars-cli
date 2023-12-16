@@ -13,8 +13,6 @@ type RootStackParamList = {
   ThirdOnboardingScreen: undefined;
   FourthOnboardingScreen: undefined;
   RestaurantMenuScreen: undefined;
-
-  // Add other screen names here as needed
 };
 
 type LaunchingScreenNavigationProp = StackNavigationProp<RootStackParamList, 'LaunchingScreen'>;
@@ -25,8 +23,7 @@ interface Props {
 
 const LaunchingScreen: React.FC<Props> = ({ navigation }) => {
   useEffect(() => {
-    // Simulate loading time for demonstration purposes
-    const fakeLoadingTime = 6000; // 2 seconds
+    const fakeLoadingTime = 6000;
     const timer = setTimeout(() => {
       navigation.replace('FirstOnboardingScreen');
     }, fakeLoadingTime);
@@ -37,7 +34,6 @@ const LaunchingScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('../../../assets/RENDER.gif')} style={styles.logo1} resizeMode="contain" />
-      {/* Add any loading animation or branding elements */}
     </View>
   );
 };
@@ -54,7 +50,6 @@ const styles = StyleSheet.create({
     height: 890,
     marginBottom: 20,
   },
-
 });
 
 export default LaunchingScreen;
