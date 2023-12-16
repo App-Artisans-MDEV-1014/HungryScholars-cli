@@ -1,5 +1,6 @@
 // ProfileScreen.tsx
 
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,7 +16,8 @@ const ProfileScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState<string | null>(null);
 
   const borderRadiusPixel = (deviceWidth * borderRadiusPercentage) / 100;
-
+  const navigation = useNavigation();
+  
   useEffect(() => {
     if (user) {
       setUsername(user.displayName || null);
